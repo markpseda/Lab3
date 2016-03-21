@@ -53,7 +53,13 @@ public class Deck {
 	{
 		this(NbrOfJokers);
 		
-		// Work to do!  Make the existing Deck cards Wild...  
+		for (Card cardW: wilds){
+			for (Card cardD: deckCards){
+				if ((cardW.geteSuit()==cardD.geteSuit())& (cardW.geteRank()==cardD.geteRank())){
+					cardD.setIsWild(true);
+				}
+			}
+		}
 		
 	}
 	

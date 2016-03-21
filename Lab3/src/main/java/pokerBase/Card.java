@@ -10,6 +10,7 @@ public class Card implements Comparable {
 	private eSuit eSuit;
 	private eRank eRank;
 	private int iCardNbr;
+	private boolean IsWild;
 	
 	public Card()
 	{
@@ -40,6 +41,14 @@ public class Card implements Comparable {
 	void seteRank(eRank eRank) {
 		this.eRank = eRank;
 	}
+	
+	public boolean isIsWild() {
+		return IsWild;
+	}
+	public void setIsWild(boolean isWild) {
+		IsWild = isWild;
+	}
+
 
 	public static Comparator<Card> CardRank = new Comparator<Card>() {
 
