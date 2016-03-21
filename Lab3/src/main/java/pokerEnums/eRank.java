@@ -14,18 +14,28 @@ public enum eRank {
 	QUEEN(12), 
 	KING(13), 
 	ACE(14),
-	JOKER(99);
+	JOKER(99, true);
 
 	private int iRankNbr;
+	private boolean IsWild;
 
 	private eRank(int iRankNbr) {
 		this.iRankNbr = iRankNbr;
+	}
+	private eRank(int iRankNbr, boolean isWild) {
+		this(iRankNbr);
+		this.IsWild = isWild;
 	}
 
 	public int getiRankNbr() {
 		return iRankNbr;
 	}
-
-
+	public void setWild(boolean isWild){
+		this.IsWild = isWild;
+	}
+	public boolean getWild() {
+		return(this.IsWild);
+	}
+	
 	
 }

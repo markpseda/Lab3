@@ -18,6 +18,8 @@ public class Deck {
 	 * 
 	 */
 	private ArrayList<Card> deckCards = new ArrayList<Card>();
+	
+	int NbrOfJokers = 0;
 
 	/**
 	 * No arg constructor for deck, will return shuffled deck of 52 cards
@@ -37,6 +39,7 @@ public class Deck {
 	public Deck(int iNbrOfJokers)
 	{
 		this();
+		NbrOfJokers = iNbrOfJokers;
 		
 		for (int i = 0; i<iNbrOfJokers;i++)
 		{
