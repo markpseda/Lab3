@@ -74,9 +74,15 @@ public class Hand {
 		Hand bestHand = Hands.get(0);
 		bestHand = Hand.EvaluateHand(bestHand);
 		for(int i = 1; i < Hands.size(); i++){
-			Hand newHand = Hand.EvaluateHand(Hands.get(i));
-			if(HandRank.compare(bestHand, newHand) == 0)
+			Hand newHand= new Hand();
+			newHand = Hand.EvaluateHand(Hands.get(i));
+			System.out.println(Hands.get(i).getCardsInHand().get(0).geteRank());
+			System.out.println(HandRank.compare(bestHand, newHand));
+			if(HandRank.compare(bestHand, newHand) == 63){
+				System.out.println(bestHand);
+				System.out.println(HandRank.compare(bestHand, newHand));
 				throw new exHand();
+			}
 			else if(HandRank.compare(bestHand, newHand) < 0){
 				bestHand = Hands.get(i);
 				bestHand = Hand.EvaluateHand(bestHand);
@@ -86,7 +92,7 @@ public class Hand {
 		return bestHand;
 	}
 	
-	public ArrayList<Hand> JokerOptions(Hand h){
+	public static ArrayList<Hand> JokerOptions(Hand h){
 		Collections.sort(h.getCardsInHand());
 		Hand Cards = h;
 		ArrayList<Hand> Hands = new ArrayList<Hand>();

@@ -15,6 +15,7 @@ import org.junit.Test;
 
 import exceptions.DeckException;
 import exceptions.HandException;
+import exceptions.exHand;
 import pokerEnums.eCardNo;
 import pokerEnums.eHandStrength;
 import pokerEnums.eRank;
@@ -93,7 +94,33 @@ public class HandTest {
 		//	This statement should throw a HandException
 		h = Hand.EvaluateHand(h);	
 	}	
+	
+	
+	@Test
+	public void jokerTest()throws exHand, HandException {
+		ArrayList<Card> FourOfAKindPlusJ = new ArrayList<Card>();
+		FourOfAKindPlusJ.add(new Card(eSuit.CLUBS,eRank.ACE,0));
+		FourOfAKindPlusJ.add(new Card(eSuit.CLUBS,eRank.ACE,0));
+		FourOfAKindPlusJ.add(new Card(eSuit.CLUBS,eRank.ACE,0));		
+		FourOfAKindPlusJ.add(new Card(eSuit.CLUBS,eRank.ACE,0));
+		FourOfAKindPlusJ.add(new Card(eSuit.JOKER,eRank.JOKER,0));
+		Collections.sort(FourOfAKindPlusJ);
+		Hand h = new Hand();
+		h = SetHand(FourOfAKindPlusJ, h);
+		ArrayList<Hand> testHands = new ArrayList<Hand>();
+		testHands = Hand.JokerOptions(h);
+		Hand bestHand = new Hand();
+		bestHand = Hand.PickBestHand(testHands);
+		HandScore hs = new HandScore();
+		assertTrue(Hand.isHandFiveOfAKind(bestHand, hs));
 			
+	}
+	
+	
+	
+	
+	
+	
 	@Test
 	public void TestFourOfAKind1() {
 		
