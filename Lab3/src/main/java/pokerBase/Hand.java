@@ -71,14 +71,19 @@ public class Hand {
 		return this;
 	}
 	public static Hand PickBestHand(ArrayList<Hand> Hands) throws exHand, HandException {
-		int bestHandStrength = 0;
-		int bestHandIndex = -1;
-		for(int i = 0; i < Hands.size(); i++){
-			if(EvaluateHand(Hands.get(i)).getHandScore().getHandStrength() > bestHandStrength){
-				
+		Hand bestHand = Hands.get(0);
+		bestHand = Hand.EvaluateHand(bestHand);
+		for(int i = 1; i < Hands.size(); i++){
+			Hand newHand = Hand.EvaluateHand(Hands.get(i));
+			if(HandRank.compare(bestHand, newHand) == 0)
+				throw new exHand();
+			else if(HandRank.compare(bestHand, newHand) < 0){
+				bestHand = Hands.get(i);
+				bestHand = Hand.EvaluateHand(bestHand);
 			}
+				
 		}
-		return Hands.get(0);
+		return bestHand;
 	}
 	
 
