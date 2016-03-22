@@ -240,6 +240,47 @@ public class HandTest {
 		//	FOAK has one kicker.  Was it a King?		
 		assertEquals(hs.getKickers().get(eCardNo.FirstCard.getCardNo()).geteRank(), eRank.ACE);
 	}	
+	
+	@Test
+	public void pickbesthandTest() throws exHand, HandException{
+		ArrayList<Hand> handArray = new ArrayList<Hand>();
+		ArrayList<Card> cards1 = new ArrayList<Card>();
+		cards1.add(new Card(eSuit.CLUBS, eRank.ACE, 5));
+		cards1.add(new Card(eSuit.SPADES, eRank.ACE, 5));
+		cards1.add(new Card(eSuit.CLUBS, eRank.FIVE, 5));
+		cards1.add(new Card(eSuit.CLUBS, eRank.ACE, 5));
+		cards1.add(new Card(eSuit.CLUBS, eRank.JACK, 5));
+		
+		Hand hand1 = new Hand();
+		hand1 = SetHand(cards1, hand1);
+		
+		ArrayList<Card> cards2 = new ArrayList<Card>();
+		cards1.add(new Card(eSuit.CLUBS, eRank.ACE, 5));
+		cards1.add(new Card(eSuit.CLUBS, eRank.ACE, 5));
+		cards1.add(new Card(eSuit.CLUBS, eRank.ACE, 5));
+		cards1.add(new Card(eSuit.HEARTS, eRank.ACE, 5));
+		cards1.add(new Card(eSuit.CLUBS, eRank.JACK, 5));
+		
+		Hand hand2 = new Hand();
+		hand2 = SetHand(cards2, hand2);
+		
+		ArrayList<Card> cards3 = new ArrayList<Card>();
+		cards1.add(new Card(eSuit.CLUBS, eRank.ACE, 5));
+		cards1.add(new Card(eSuit.CLUBS, eRank.ACE, 5));
+		cards1.add(new Card(eSuit.DIAMONDS, eRank.ACE, 5));
+		cards1.add(new Card(eSuit.CLUBS, eRank.ACE, 5));
+		cards1.add(new Card(eSuit.CLUBS, eRank.ACE, 5));
+		
+		Hand hand3 = new Hand();
+		hand3 = SetHand(cards3, hand3);
+		
+		handArray.add(hand1);
+		handArray.add(hand2);
+		handArray.add(hand3);
+		hand3 = Hand.EvaluateHand(hand3);
+		assertTrue(hand3.getHandScore() == Hand.PickBestHand(handArray).getHandScore());
+	}
+	
 	@Test
 	public void TestFiveOfAKind() {
 		
