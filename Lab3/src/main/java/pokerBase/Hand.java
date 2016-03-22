@@ -81,6 +81,60 @@ public class Hand {
 		return Hands.get(0);
 	}
 	
+	public ArrayList<Hand> JokerOptions(Hand h){
+		Collections.sort(h.getCardsInHand());
+		Hand Cards = h;
+		ArrayList<Hand> Hands = new ArrayList<Hand>();
+		if (Cards.getCardsInHand().get(0).IsWild()){
+			for(eRank rank:  pokerEnums.eRank.values()){
+				Cards.getCardsInHand().get(0).seteRank(rank);
+				Cards.getCardsInHand().get(0).seteSuit(Cards.getCardsInHand().get(4).geteSuit());
+				if (Cards.getCardsInHand().get(1).IsWild()){
+					for(eRank rank1:  pokerEnums.eRank.values()){
+						Cards.getCardsInHand().get(1).seteRank(rank1);
+						Cards.getCardsInHand().get(1).seteSuit(Cards.getCardsInHand().get(4).geteSuit());
+						if (Cards.getCardsInHand().get(2).IsWild()){
+							for(eRank rank2:  pokerEnums.eRank.values()){
+								Cards.getCardsInHand().get(2).seteRank(rank2);
+								Cards.getCardsInHand().get(2).seteSuit(Cards.getCardsInHand().get(4).geteSuit());
+								if (Cards.getCardsInHand().get(3).IsWild()){
+									for(eRank rank3:  pokerEnums.eRank.values()){
+										Cards.getCardsInHand().get(3).seteRank(rank3);
+										Cards.getCardsInHand().get(3).seteSuit(Cards.getCardsInHand().get(4).geteSuit());
+										if (Cards.getCardsInHand().get(4).IsWild()){
+											for(eRank rank4:  pokerEnums.eRank.values()){
+												Cards.getCardsInHand().get(4).seteRank(rank4);
+												Cards.getCardsInHand().get(4).seteSuit(eSuit.SPADES);
+												Cards.getCardsInHand().get(0).seteSuit(Cards.getCardsInHand().get(4).geteSuit());
+												Cards.getCardsInHand().get(1).seteSuit(Cards.getCardsInHand().get(4).geteSuit());
+												Cards.getCardsInHand().get(2).seteSuit(Cards.getCardsInHand().get(4).geteSuit());
+												Cards.getCardsInHand().get(3).seteSuit(Cards.getCardsInHand().get(4).geteSuit());
+												Hands.add(Cards);
+											}
+										}
+										else{
+											Hands.add(Cards);
+										}
+									}
+								}
+								else{
+									Hands.add(Cards);
+								}
+							}
+						}
+						else {
+							Hands.add(Cards);
+						}
+					}
+				}
+				else{
+				Hands.add(Cards);
+				}
+			}
+		}
+		return(Hands);
+	}
+	
 
 		
 	
