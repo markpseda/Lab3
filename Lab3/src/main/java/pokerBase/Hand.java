@@ -69,6 +69,11 @@ public class Hand {
 		CardsInHand.add(d.Draw());
 		return this;
 	}
+	//public static Hand PickBestHand(ArrayList<Hand> Hands) //throws exHand NEED TO IMPLAMENT
+	{
+		
+	}
+
 
 	/**
 	 * EvaluateHand is a static method that will score a given Hand of cards

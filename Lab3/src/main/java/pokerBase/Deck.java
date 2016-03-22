@@ -43,7 +43,7 @@ public class Deck {
 		
 		for (int i = 0; i<iNbrOfJokers;i++)
 		{
-			deckCards.add(new Card(eSuit.JOKER, eRank.JOKER, 53));
+			deckCards.add(new Card(eSuit.JOKER, eRank.JOKER, 53+i));
 		}
 		Collections.shuffle(deckCards);
 	}
@@ -56,7 +56,7 @@ public class Deck {
 		for (Card cardW: wilds){
 			for (Card cardD: deckCards){
 				if ((cardW.geteSuit()==cardD.geteSuit())& (cardW.geteRank()==cardD.geteRank())){
-					cardD.setIsWild(true);
+					cardD.setWild(true);
 				}
 			}
 		}

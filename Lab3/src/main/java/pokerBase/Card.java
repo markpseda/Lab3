@@ -20,7 +20,13 @@ public class Card implements Comparable {
 		super();
 		this.eSuit = eSuit;
 		this.eRank = eRank;
-		this.iCardNbr = iCardNbr;
+		this.iCardNbr = iCardNbr; 
+		if (eRank == pokerEnums.eRank.JOKER){
+			this.IsWild = true;
+		}
+		else{
+			this.IsWild = false; 
+		}
 	}
 
 	public eSuit geteSuit() {
@@ -42,10 +48,10 @@ public class Card implements Comparable {
 		this.eRank = eRank;
 	}
 	
-	public boolean isIsWild() {
+	public boolean IsWild() {
 		return IsWild;
 	}
-	public void setIsWild(boolean isWild) {
+	public void setWild(boolean isWild) {
 		IsWild = isWild;
 	}
 
