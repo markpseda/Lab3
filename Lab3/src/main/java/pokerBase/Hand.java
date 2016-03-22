@@ -94,41 +94,46 @@ public class Hand {
 	
 	public static ArrayList<Hand> JokerOptions(Hand h){
 		Collections.sort(h.getCardsInHand());
-		Card card = null;
-		Card card1 = null;
-		Card card2= null;
-		Card card3 = null;
-		Card card4 = null;
+		Card card = h.CardsInHand.get(0);
+		Card card1 = h.CardsInHand.get(1);
+		Card card2= h.CardsInHand.get(2);
+		Card card3 = h.CardsInHand.get(3);
+		Card card4 = h.CardsInHand.get(4);
 		Hand Cards = h;
 		ArrayList<Card> cardList = new ArrayList<Card>();
 		cardList =  h.getCardsInHand();
 		ArrayList<Hand> Hands = new ArrayList<Hand>();
 		if (Cards.getCardsInHand().get(0).IsWild()){
 			for(eRank rank:  pokerEnums.eRank.values()){
+				if (rank == eRank.JOKER){continue;}
 				card.seteRank(rank);
 				card.seteSuit(Cards.getCardsInHand().get(4).geteSuit());
 				cardList.set(0, card);
 				Cards.setCardsInHand(cardList);
 				if (Cards.getCardsInHand().get(1).IsWild()){
 					for(eRank rank1:  pokerEnums.eRank.values()){
+						if (rank == eRank.JOKER){continue;}
 						card1.seteRank(rank);
 						card1.seteSuit(Cards.getCardsInHand().get(4).geteSuit());
 						cardList.set(1, card1);
 						Cards.setCardsInHand(cardList);
 						if (Cards.getCardsInHand().get(2).IsWild()){
 							for(eRank rank2:  pokerEnums.eRank.values()){
+								if (rank == eRank.JOKER){continue;}
 								card2.seteRank(rank);
 								card2.seteSuit(Cards.getCardsInHand().get(4).geteSuit());
 								cardList.set(2, card2);
 								Cards.setCardsInHand(cardList);
 								if (Cards.getCardsInHand().get(3).IsWild()){
 									for(eRank rank3:  pokerEnums.eRank.values()){
+										if (rank == eRank.JOKER){continue;}
 										card3.seteRank(rank);
 										card3.seteSuit(Cards.getCardsInHand().get(4).geteSuit());
 										cardList.set(3, card3);
 										Cards.setCardsInHand(cardList);
 										if (Cards.getCardsInHand().get(4).IsWild()){
 											for(eRank rank4:  pokerEnums.eRank.values()){
+												if (rank == eRank.JOKER){continue;}
 												card4.seteRank(rank);
 												card4.seteSuit(eSuit.SPADES);
 												card3.seteSuit(eSuit.SPADES);
