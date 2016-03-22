@@ -11,6 +11,7 @@ import java.util.Locale;
 
 import exceptions.DeckException;
 import exceptions.HandException;
+import exceptions.exHand;
 import pokerEnums.*;
 
 import static java.lang.System.out;
@@ -69,10 +70,20 @@ public class Hand {
 		CardsInHand.add(d.Draw());
 		return this;
 	}
-	//public static Hand PickBestHand(ArrayList<Hand> Hands) //throws exHand NEED TO IMPLAMENT
-	{
-		
+	public static Hand PickBestHand(ArrayList<Hand> Hands) throws exHand, HandException {
+		int bestHandStrength = 0;
+		int bestHandIndex = -1;
+		for(int i = 0; i < Hands.size(); i++){
+			if(EvaluateHand(Hands.get(i)).getHandScore().getHandStrength() > bestHandStrength){
+				
+			}
+		}
+		return Hands.get(0);
 	}
+	
+
+		
+	
 
 
 	/**
