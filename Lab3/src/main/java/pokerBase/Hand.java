@@ -88,32 +88,49 @@ public class Hand {
 	
 	public ArrayList<Hand> JokerOptions(Hand h){
 		Collections.sort(h.getCardsInHand());
+		Card card = null;
+		Card card1 = null;
+		Card card2= null;
+		Card card3 = null;
+		Card card4 = null;
 		Hand Cards = h;
+		ArrayList<Card> cardList = new ArrayList<Card>();
+		cardList =  h.getCardsInHand();
 		ArrayList<Hand> Hands = new ArrayList<Hand>();
 		if (Cards.getCardsInHand().get(0).IsWild()){
 			for(eRank rank:  pokerEnums.eRank.values()){
-				Cards.getCardsInHand().get(0).seteRank(rank);
-				Cards.getCardsInHand().get(0).seteSuit(Cards.getCardsInHand().get(4).geteSuit());
+				card.seteRank(rank);
+				card.seteSuit(Cards.getCardsInHand().get(4).geteSuit());
+				cardList.set(0, card);
+				Cards.setCardsInHand(cardList);
 				if (Cards.getCardsInHand().get(1).IsWild()){
 					for(eRank rank1:  pokerEnums.eRank.values()){
-						Cards.getCardsInHand().get(1).seteRank(rank1);
-						Cards.getCardsInHand().get(1).seteSuit(Cards.getCardsInHand().get(4).geteSuit());
+						card1.seteRank(rank);
+						card1.seteSuit(Cards.getCardsInHand().get(4).geteSuit());
+						cardList.set(1, card1);
+						Cards.setCardsInHand(cardList);
 						if (Cards.getCardsInHand().get(2).IsWild()){
 							for(eRank rank2:  pokerEnums.eRank.values()){
-								Cards.getCardsInHand().get(2).seteRank(rank2);
-								Cards.getCardsInHand().get(2).seteSuit(Cards.getCardsInHand().get(4).geteSuit());
+								card2.seteRank(rank);
+								card2.seteSuit(Cards.getCardsInHand().get(4).geteSuit());
+								cardList.set(2, card2);
+								Cards.setCardsInHand(cardList);
 								if (Cards.getCardsInHand().get(3).IsWild()){
 									for(eRank rank3:  pokerEnums.eRank.values()){
-										Cards.getCardsInHand().get(3).seteRank(rank3);
-										Cards.getCardsInHand().get(3).seteSuit(Cards.getCardsInHand().get(4).geteSuit());
+										card3.seteRank(rank);
+										card3.seteSuit(Cards.getCardsInHand().get(4).geteSuit());
+										cardList.set(3, card3);
+										Cards.setCardsInHand(cardList);
 										if (Cards.getCardsInHand().get(4).IsWild()){
 											for(eRank rank4:  pokerEnums.eRank.values()){
-												Cards.getCardsInHand().get(4).seteRank(rank4);
-												Cards.getCardsInHand().get(4).seteSuit(eSuit.SPADES);
-												Cards.getCardsInHand().get(0).seteSuit(Cards.getCardsInHand().get(4).geteSuit());
-												Cards.getCardsInHand().get(1).seteSuit(Cards.getCardsInHand().get(4).geteSuit());
-												Cards.getCardsInHand().get(2).seteSuit(Cards.getCardsInHand().get(4).geteSuit());
-												Cards.getCardsInHand().get(3).seteSuit(Cards.getCardsInHand().get(4).geteSuit());
+												card4.seteRank(rank);
+												card4.seteSuit(eSuit.SPADES);
+												card3.seteSuit(eSuit.SPADES);
+												card2.seteSuit(eSuit.SPADES);
+												card1.seteSuit(eSuit.SPADES);
+												card.seteSuit(eSuit.SPADES);
+												cardList.set(4, card4);
+												Cards.setCardsInHand(cardList);
 												Hands.add(Cards);
 											}
 										}
