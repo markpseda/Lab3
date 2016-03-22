@@ -70,17 +70,27 @@ public class Hand {
 		CardsInHand.add(d.Draw());
 		return this;
 	}
+	/*
+	 * This function is passed a list of Hands. It goes through the list and 
+	 * finds the highest ranked Hand and then returns that Hand. It also will throw
+	 * the exHand() exception when two hands evaluate to the same value.
+	 * 
+	 * input: List of Hands
+	 * 
+	 * Output: Hand
+	 */
+	
 	public static Hand PickBestHand(ArrayList<Hand> Hands) throws exHand, HandException {
 		Hand bestHand = Hands.get(0);
 		bestHand = Hand.EvaluateHand(bestHand);
 		for(int i = 1; i < Hands.size(); i++){
 			Hand newHand= new Hand();
 			newHand = Hand.EvaluateHand(Hands.get(i));
-			System.out.println(Hands.get(i).getCardsInHand().get(0).geteRank());
-			System.out.println(HandRank.compare(bestHand, newHand));
-			if(HandRank.compare(bestHand, newHand) == 63){
-				System.out.println(bestHand);
-				System.out.println(HandRank.compare(bestHand, newHand));
+			//System.out.println(Hands.get(i).getCardsInHand().get(0).geteRank());
+			//System.out.println(HandRank.compare(bestHand, newHand));
+			if(HandRank.compare(bestHand, newHand) == 0){
+				//System.out.println(bestHand);
+				//System.out.println(HandRank.compare(bestHand, newHand));
 				throw new exHand();
 			}
 			else if(HandRank.compare(bestHand, newHand) < 0){
@@ -91,7 +101,18 @@ public class Hand {
 		}
 		return bestHand;
 	}
-	
+	/*
+	 * This function should creat a list of hands that cover all possible hands created with
+	 * a set amount of jokers.
+	 * 
+	 * input: Hand
+	 * output: List of Hands
+	 * 
+	 * ******PROBLEMS********:
+	 *  This Code should work but in this Case Java is Pass by Ref
+	 *  meaning that when the function loops it over writes the previous Hands in the list.
+	 * We do not know how to solve this issue, but otherwise the logic is sounds.
+	 */
 	public static ArrayList<Hand> JokerOptions(Hand h){
 		Collections.sort(h.getCardsInHand());
 		Card card = h.CardsInHand.get(0);
